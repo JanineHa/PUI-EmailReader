@@ -1,0 +1,74 @@
+<div class="email-reader__container">
+  <h1>Basic Email Reader: Assessment 1</h1>
+  <h5>from Janine Haschke</h5>
+  <div class="email-reader__form">
+    <div class="form-group row email-reader__form-row">
+      <label for="from" class="col-sm-2 col-form-label"> From: </label>
+      <div class="col-sm-8">
+        <input
+          type="email"
+          id="from"
+          class="form-control"
+          placeholder="Please enter your E-Mail address"
+          [(ngModel)]="email.from"
+        />
+      </div>
+    </div>
+    <div class="form-group row email-reader__form-row">
+      <label for="to" class="col-sm-2 col-form-label"> To: </label>
+      <div class="col-sm-8">
+        <input
+          type="email"
+          id="to"
+          class="form-control"
+          placeholder="Please enter recipient E-Mail address"
+          [(ngModel)]="email.to"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row email-reader__form-row">
+      <label for="subject" class="col-sm-2 col-form-label"> Subject: </label>
+      <div class="col-sm-8">
+        <input
+          type="text"
+          id="subject"
+          class="form-control"
+          placeholder="Please enter the subject"
+          [(ngModel)]="email.subject"
+        />
+      </div>
+    </div>
+    <div class="form-group row email-reader__form-row">
+      <label for="body" class="col-sm-2 col-form-label"> Body: </label>
+      <div class="col-sm-8">
+        <textarea
+          type="text"
+          id="body"
+          class="form-control"
+          placeholder="Please enter your message"
+          [(ngModel)]="email.body"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h3>Up-to-date viewer showing the data:</h3>
+    <div>
+      From: {{ email.from }} <br />
+      To: {{ email.to }} <br />
+      Subject: {{ email.subject }} <br />
+      Body: {{ email.body }}
+    </div>
+  </div>
+
+  <div class="email-reader__actions">
+    <button class="btn btn-outline-success btn-lg" (click)="send()">
+      Send
+    </button>
+    <button class="btn btn-outline-danger btn-lg" (click)="clean()">
+      Clean
+    </button>
+  </div>
+</div>
