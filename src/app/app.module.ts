@@ -6,9 +6,16 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { EmailReaderBasicComponent } from './email-reader-basic/email-reader-basic.component';
+import { EmailReaderFormComponent } from './email-reader-form/email-reader-form.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
-  declarations: [AppComponent, EmailReaderBasicComponent],
+  declarations: [
+    AppComponent,
+    EmailReaderBasicComponent,
+    EmailReaderFormComponent,
+    HighlightDirective,
+  ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
