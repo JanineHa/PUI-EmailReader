@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { EmailReaderBasicComponent } from './email-reader-basic/email-reader-basic.component';
 import { EmailReaderFormComponent } from './email-reader-form/email-reader-form.component';
+import { EmailReaderFormForServiceComponent } from './email-reader-form-for-service/email-reader-form-for-service.component';
 
 const routes: Routes = [
   { path: 'emailreaderbasic', component: EmailReaderBasicComponent },
   { path: 'emailreaderform', component: EmailReaderFormComponent },
+  {
+    path: 'emailreaderformforservice',
+    component: EmailReaderFormForServiceComponent,
+  },
 ];
 
 @NgModule({

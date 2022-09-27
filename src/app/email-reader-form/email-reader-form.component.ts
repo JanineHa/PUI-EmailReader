@@ -13,7 +13,7 @@ export class EmailReaderFormComponent implements OnInit {
   @ViewChild('emailForm') emailForm: any;
 
   constructor() {
-    this.email = { from: '', to: '', subject: '', body: '' };
+    this.email = { id: 0, from: '', to: '', subject: '', body: '' };
     this.emailList = [];
   }
 
@@ -29,8 +29,8 @@ export class EmailReaderFormComponent implements OnInit {
         this.email.to
     );
     this.emailList.push(this.email);
-    console.log(this.emailList);
-    this.email = { from: '', to: '', subject: '', body: '' };
+    //console.log(this.emailList);
+    this.email = { id: 0, from: '', to: '', subject: '', body: '' };
     this.cleanForm();
   }
 
