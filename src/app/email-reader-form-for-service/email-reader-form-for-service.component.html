@@ -165,6 +165,7 @@
           <td>Message:</td>
         </tr>
         <tr
+          (click)="selectEmail(email.id)"
           class="email-reader__table-row"
           *ngFor="
             let email of newEmailList
@@ -179,10 +180,17 @@
           <td>{{ email.body }}</td>
         </tr>
       </table>
-      <div style="display: flex; justify-content: center; margin-top: 20px">
-        <button class="btn btn-outline-info btn-sm" (click)="deleteLastEmail()">
-          Delete last E-Mail
+      <div class="email-reader__delete-section">
+        <button
+          class="btn btn-outline-info btn-sm"
+          (click)="deleteSelectedEmail()"
+        >
+          Delete selected E-Mail
         </button>
+        <div class="email-reader__delete-text">
+          Click on a Mail you want to delete and than the button. <br />
+          The selected Mail will not be highlighted.
+        </div>
       </div>
     </div>
     <ng-template #elseBlock>The list of emails is empty.</ng-template>

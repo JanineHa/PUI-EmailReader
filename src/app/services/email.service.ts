@@ -39,6 +39,9 @@ export class EmailService {
     return this.emailList;
   }
 
+  getEmail(): Email {
+    return this.email;
+  }
   /* getEmails(id: number = 0): Email | Email[] {
     if (id > 0) {
       return this.email;
@@ -56,10 +59,21 @@ export class EmailService {
       return this.emailList;
     }
   }
-  deleteFromList(): Email[] {
+  deleteFromListId(id: number): Email[] {
+    if (this.emailList.find((item) => item.id === id)) {
+      var indexOfDeletedEmail = this.emailList.findIndex(
+        (item) => item.id === id
+      );
+      this.emailList.splice(indexOfDeletedEmail, 1);
+      return this.emailList;
+    } else {
+      return this.emailList;
+    }
+  }
+  /*  deleteFromList(): Email[] {
     this.emailList.pop();
     return this.emailList;
-  }
+  } */
   genId(email: Email[]): number {
     return email.length > 0
       ? Math.max(...email.map((email) => email.id)) + 1

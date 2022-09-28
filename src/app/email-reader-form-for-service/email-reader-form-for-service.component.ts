@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { bufferToggle } from 'rxjs';
 import { Email } from '../interfaces/email';
 import { EmailService } from '../services/email.service';
 
@@ -24,7 +25,9 @@ export class EmailReaderFormForServiceComponent implements OnInit {
     this.term = '';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newEmailList = this.emailService.getEmails();
+  }
 
   sendForm(): void {
     window.alert(
@@ -46,7 +49,14 @@ export class EmailReaderFormForServiceComponent implements OnInit {
     this.emailForm.reset();
   }
 
-  deleteLastEmail(): void {
-    this.newEmailList = this.emailService.deleteFromList();
+  selectEmail(index: number): number {
+    this.newEmail = this.emailService.getEmail();
+    this.newEmail.id = index;
+    return this.newEmail.id;
+  }
+
+  deleteSelectedEmail(): void {
+    var id = this.selectEmail(this.newEmail.id);
+    this.newEmailList = this.emailService.deleteFromListId(id);
   }
 }
