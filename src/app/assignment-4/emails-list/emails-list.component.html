@@ -1,0 +1,81 @@
+<div class="email-reader__container">
+  <h3 class="email-reader__list-heading">List of sent E-Mails:</h3>
+  <div *ngIf="newEmailList.length !== 0; else elseBlock">
+    <h5 style="margin-bottom: 10px">E-Mail Filtering:</h5>
+    <div>
+      <div class="email-reader__list-row">
+        <div style="margin-right: 15px">E-Mails filtered by term:</div>
+        <input
+          type="text"
+          class="form-control form-control-sm email-reader__list-textinput"
+          [(ngModel)]="term"
+        />
+      </div>
+      <div class="email-reader__list-row" style="margin: 15px 0 30px 0">
+        <div style="margin-right: 22px">E-Mails only with body:</div>
+        <input
+          type="checkbox"
+          style="transform: scale(1.2)"
+          [(ngModel)]="withBodyFilter"
+        />
+      </div>
+    </div>
+    <table class="email-reader__table">
+      <tr class="email-reader__table-row row-weight">
+        <td>ID:</td>
+        <td>From:</td>
+        <td>To:</td>
+        <td>Subject:</td>
+        <td>Message:</td>
+      </tr>
+      <tr
+        class="email-reader__table-row"
+        *ngFor="
+          let email of newEmailList
+            | filter: term
+            | withBodyFilter: withBodyFilter
+        "
+      >
+        <td>{{ email.id }}</td>
+        <td>{{ email.from }}</td>
+        <td>{{ email.to }}</td>
+        <td>{{ email.subject }}</td>
+        <td>{{ email.body }}</td>
+        <div class="text-right">
+          <button
+            (click)="showMailDetails(email.id)"
+            [routerLink]="['/assignment-4-viewer/' + email.id]"
+            class="btn btn-outline-info btn-sm mr-1"
+          >
+            Details
+          </button>
+          <button
+            (click)="deleteSelectedEmail(email.id)"
+            class="btn btn-outline-warning btn-sm mr-1"
+          >
+            Remove
+          </button>
+        </div>
+      </tr>
+    </table>
+    <div class="email-reader__delete-section">
+      <button
+        class="btn btn-outline-primary btn-lg"
+        [routerLink]="['/assignment-4-form']"
+      >
+        Create new E-Mail
+      </button>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <div class="email-reader__empty-list">
+      The list of emails is empty.
+      <button
+        class="btn btn-outline-primary btn-lg"
+        [routerLink]="['/assignment-4-form']"
+      >
+        Create new E-Mail
+      </button>
+    </div>
+  </ng-template>
+</div>

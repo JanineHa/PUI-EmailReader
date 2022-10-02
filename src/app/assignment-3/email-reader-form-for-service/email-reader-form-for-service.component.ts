@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { bufferToggle } from 'rxjs';
-import { Email } from '../interfaces/email';
-import { EmailService } from '../services/email.service';
+import { Email } from '../../interfaces/email';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-email-reader-form-for-service',

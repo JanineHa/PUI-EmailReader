@@ -42,13 +42,6 @@ export class EmailService {
   getEmail(): Email {
     return this.email;
   }
-  /* getEmails(id: number = 0): Email | Email[] {
-    if (id > 0) {
-      return this.email;
-    } else {
-      return this.emailList;
-    }
-  } */
 
   addToList(newId: number, newEmail: Email): Email[] {
     if (this.emailList.findIndex((item) => item.id !== newId) !== -1) {
@@ -56,6 +49,7 @@ export class EmailService {
       this.emailList.push(newEmail);
       return this.emailList;
     } else {
+      this.emailList.push(newEmail);
       return this.emailList;
     }
   }
@@ -70,10 +64,16 @@ export class EmailService {
       return this.emailList;
     }
   }
-  /*  deleteFromList(): Email[] {
-    this.emailList.pop();
-    return this.emailList;
-  } */
+
+  findIndex(id: number): number {
+    if (this.emailList.find((item) => item.id === id)) {
+      var indexOfEmail = this.emailList.findIndex((item) => item.id === id);
+      return indexOfEmail;
+    } else {
+      return 0;
+    }
+  }
+
   genId(email: Email[]): number {
     return email.length > 0
       ? Math.max(...email.map((email) => email.id)) + 1

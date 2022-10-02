@@ -1,0 +1,30 @@
+<div class="email-reader__container">
+  <div *ngIf="emailList.length !== 0; else elseBlock">
+    <h3>E-Mail Details:</h3>
+    <div class="email-reader__list">
+      <ul *ngIf="email" class="email-reader__list-details">
+        <li>E-Mails is from: {{ emailList[rightIndex].from }}</li>
+        <li>E-Mails is to: {{ emailList[rightIndex].to }}</li>
+        <li>E-Mail subject: {{ emailList[rightIndex].subject }}</li>
+        <li>E-Mail message: {{ emailList[rightIndex].body }}</li>
+      </ul>
+      <button
+        class="btn btn-outline-primary btn-sm"
+        [routerLink]="['/assignment-4-list']"
+      >
+        Back to list
+      </button>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <div class="email-reader__list">
+      The list of emails is empty.
+      <button
+        class="btn btn-outline-primary btn-lg"
+        [routerLink]="['/assignment-4-list']"
+      >
+        Back to list
+      </button>
+    </div>
+  </ng-template>
+</div>

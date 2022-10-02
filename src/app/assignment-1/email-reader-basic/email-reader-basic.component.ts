@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Email } from '../interfaces/email';
+import { Email } from '../../interfaces/email';
 
 @Component({
   selector: 'app-email-reader-basic',
